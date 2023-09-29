@@ -1,0 +1,49 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
+{
+	"name": "Node.js & TypeScript",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/typescript-node:1-20-bullseye",
+	"features": {
+		"ghcr.io/devcontainers-contrib/features/ionic-cli:2": {},
+		"ghcr.io/devcontainers-contrib/features/vue-cli:2": {}
+	},
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "yarn install",
+
+	// Configure tool-specific properties.
+    "customizations": {
+        // Configure properties specific to VS Code.
+        "vscode": {
+            // Add the IDs of extensions you want installed when the container is created.
+            "extensions": [
+                // Volar extension pack
+                "MisterJ.vue-volar-extention-pack",
+                // Git Lens
+                "eamodio.gitlens",
+                // TypeScript Vue Plugin (Volar)
+                "Vue.vscode-typescript-vue-plugin",
+                // Template String Converter
+                "meganrogge.template-string-converter",
+                // Todo Highlight
+                "wayou.vscode-todo-highlight",
+                // Error Lens
+                "usernamehw.errorlens",
+                // Console Ninja
+                "WallabyJs.console-ninja",
+                // Material Icon Theme
+                "PKief.material-icon-theme"
+            ]
+        }
+    }
+
+    // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+    // "remoteUser": "root"
+}
