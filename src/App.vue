@@ -12,9 +12,9 @@ const newItemHighPriority = ref(false);
 
 <template>
   <h1> <i class="material-icons shopping-cart-icon">local_mall</i> {{ header }}</h1>
-  <div class="add-item form">
+  <form v-on:submit.prevent="({id: items.length + 1, label: newItem}) " class="add-item form">
     <!-- Input de Nuevo Articulo -->
-    <input v-on:keyup.enter="items.push({id: items.length + 1, label: newItem})" v-model.trim="newItem" type="text" placeholder="Ingresar nuevo articulo">
+    <input  v-model.trim="newItem" type="text" placeholder="Ingresar nuevo articulo">
     <!-- Check Boxes -->
     <label>
       <input v-model="newItemHighPriority" 
@@ -23,8 +23,8 @@ const newItemHighPriority = ref(false);
     </label>
     {{ newItemHighPriority ? "🔥" : "🧊" }}
     <!-- Boton de UI -->
-    <button v-on:click="items.push({id: items.length + 1, label: newItem}) " class="btn btn-primary">Salvar Articulo</button>
-  </div>
+    <button  class="btn btn-primary">Salvar Articulo</button>
+  </form>
   <ul>
     <li v-for="{ id, label } in items" v-bind:key="id">
       🔹 {{ label }}
