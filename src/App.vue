@@ -14,7 +14,7 @@ const newItemHighPriority = ref(false);
   <h1> <i class="material-icons shopping-cart-icon">local_mall</i> {{ header }}</h1>
   <div class="add-item form">
     <!-- Input de Nuevo Articulo -->
-    <input v-model.trim="newItem" type="text" placeholder="Ingresar nuevo articulo">
+    <input v-on:keyup.enter="items.push({id: items.length + 1, label: newItem})" v-model.trim="newItem" type="text" placeholder="Ingresar nuevo articulo">
     <!-- Check Boxes -->
     <label>
       <input v-model="newItemHighPriority" 
