@@ -6,12 +6,21 @@ const items = ref([
   {id: 2, label: '1 lata de frijoles'},
   {id: 3, label: '2 lata de atún'}
 ]);
+
+// agreganos metodo para guardar nuevo articulo en la lista 
+const saveitem = () => {
+  items.value.push({id: items.value.length + 1, label: newItem.value})
+  // lismpiando el contenido de newiten
+  newItem.value="";
+}
+
 const newItem = ref('');
 const newItemHighPriority = ref(false);
 </script>
 
 <template>
-  <form v-on:submit.prevent="items.push({id: items.length + 1, label: newItem})" class="add-item form">
+  <h1>{{ header }}</h1>
+  <form v-on:submit.prevent="saveitem" class="add-item form">
     <!-- Input de Nuevo Articulo -->
     <input v-model.trim="newItem" type="text" placeholder="Ingresar nuevo articulo">
     <!-- Check Boxes -->
