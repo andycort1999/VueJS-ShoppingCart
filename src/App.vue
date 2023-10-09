@@ -2,15 +2,15 @@
 import { ref } from 'vue';
 const header = ref('App Lista de compras');
 const items = ref([
-  {id: 1, label: '10 bolillos'},
-  {id: 2, label: '1 lata de frijoles'},
-  {id: 3, label: '2 lata de atún'}
+  // {id: 1, label: '10 bolillos'},
+  // {id: 2, label: '1 lata de frijoles'},
+  // {id: 3, label: '2 lata de atún'}
 ]);
 
 // agreganos metodo para guardar nuevo articulo en la lista 
 const saveitem = () => {
   items.value.push({id: items.value.length + 1, label: newItem.value})
-  // lismpiando el contenido de newiten
+  // limpiando el contenido de newiten
   newItem.value="";
 }
 
@@ -19,7 +19,15 @@ const newItemHighPriority = ref(false);
 </script>
 
 <template>
-  <h1>{{ header }}</h1>
+  <div class="header">
+    <h1>{{ header }}</h1>
+    <button class="btn">
+      Cancelar
+    </button>
+    <button class="btn btn-primary">
+      Ageragar Articulo
+    </button>
+  </div>
   <form v-on:submit.prevent="saveitem" class="add-item form">
     <!-- Input de Nuevo Articulo -->
     <input v-model.trim="newItem" type="text" placeholder="Ingresar nuevo articulo">
@@ -38,8 +46,9 @@ const newItemHighPriority = ref(false);
       🔹 {{ label }}
     </li>
   </ul>
+  <p v-if="items.length === 0"> 📿Lista de compras vacia📿</p>
+  <p v-else>🔥Ingrese mas items 🔥</p>
 </template>
-
 <style scoped>
 .shopping-cart-icon {
   font-size: 2rem; /* Adjust the font-size value as per your desired size */
