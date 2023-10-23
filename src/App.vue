@@ -14,7 +14,8 @@ const saveitem = () => {
   newItem.value="";
 }
 
-const newItem = ref('');
+// Enlazado con la caja de texto
+const newItem = ref(''); 
 const newItemHighPriority = ref(false);
 const editing = ref(false);
 const doEdit = (edit) => {
@@ -35,6 +36,9 @@ const doEdit = (edit) => {
       Cancelar
     </button>
   </div>
+  <!-- <a v-bind:href="newItem">
+    <i class="material-icons shoppind-cart-icon">link</i>
+  </a> -->
   <form v-if="editing" v-on:submit.prevent="saveitem" class="add-item form">
     <!-- Input de Nuevo Articulo -->
     <input v-model.trim="newItem" type="text" placeholder="Ingresar nuevo articulo">
@@ -46,7 +50,7 @@ const doEdit = (edit) => {
     </label>
     {{ newItemHighPriority ? "🔥" : "🧊" }}
     <!-- Boton de UI -->
-    <button class="btn btn-primary">Salvar Articulo</button>
+    <button  class="btn btn-primary">Salvar Articulo</button>
   </form>
   <ul>
     <li v-for="{ id, label } in items" v-bind:key="id">
