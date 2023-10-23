@@ -1,6 +1,6 @@
 <center>
     <img
-    src="/workspaces/VueJS-ShoppingCart/public/img/ITGAM.png"
+    src="public\img\ITGAM.png"
     alt="Itgam Header" />
 </center>
 # Shopping Cart App
