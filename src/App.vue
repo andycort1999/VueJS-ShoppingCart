@@ -16,19 +16,26 @@ const saveitem = () => {
 
 const newItem = ref('');
 const newItemHighPriority = ref(false);
+const editing = ref(false);
+const doEdit = (edit) => {
+  // Alterar la variable "editing"
+  editing.value = edit;
+  // Limpiar el input de texto
+  newItem.value = "";
+}
 </script>
 
 <template>
   <div class="header">
     <h1>{{ header }}</h1>
-    <button class="btn">
-      Cancelar
-    </button>
-    <button class="btn btn-primary">
+    <button v-if="!editing" @click="doEdit(true)" class="btn btn-primary">
       Ageragar Articulo
     </button>
+    <button v-else @click="doEdit(false)" class="btn">
+      Cancelar
+    </button>
   </div>
-  <form v-on:submit.prevent="saveitem" class="add-item form">
+  <form v-if="editing" v-on:submit.prevent="saveitem" class="add-item form">
     <!-- Input de Nuevo Articulo -->
     <input v-model.trim="newItem" type="text" placeholder="Ingresar nuevo articulo">
     <!-- Check Boxes -->
