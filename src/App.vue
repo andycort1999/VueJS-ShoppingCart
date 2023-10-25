@@ -50,7 +50,7 @@ const doEdit = (edit) => {
     </label>
     {{ newItemHighPriority ? "🔥" : "🧊" }}
     <!-- Boton de UI -->
-    <button  class="btn btn-primary">Salvar Articulo</button>
+    <button :disabled="newItem.length === 0" class="btn btn-primary">Salvar Articulo</button>
   </form>
   <ul>
     <li v-for="{ id, label } in items" v-bind:key="id">
