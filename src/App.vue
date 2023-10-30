@@ -1,12 +1,21 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 const header = ref('App Lista de compras');
 const items = ref([
   {id: 1, label: '10 bolillos', purchased: true, highPriority: false},
   {id: 2, label: '1 lata de frijoles', purchased: false, highPriority: true},
   {id: 3, label: '2 lata de atún', purchased: true, highPriority: true}
 ]);
-// 
+//Creando una propirdad computada 
+const characterCount = computed(()=>{
+//Toda propiedad computada debe regresar a un valor
+  return newItem.value.length;
+})
+//Creando propiedad computada que invierte items de la lista
+const reversedItmes = computed (()=>{
+  return[...items.value].reverse();
+})
+
 const togglePurchased = (item) =>{
   //Invertir la propiedad "purchased"
   item.purchased = !item.purchased;
@@ -57,15 +66,19 @@ const doEdit = (edit) => {
     <button :disabled="newItem.length === 0" class="btn btn-primary">
       Salvar Articulo
     </button>
+  <!--Contador-->
+  <p class="counter">
+    {{ characterCount }} /200
+  </p>
   </form>
+  <!--Lista-->
   <ul>
     <li 
-     v-for="({ id, label, purchased, highPriority }, index) in items" 
-      v-bind:key="id"
+     v-for="({ id, label, purchased, highPriority }, index) in reversedItmes" 
       :class="{strikeout: purchased, priority: highPriority}"
-      @click="togglePurchased(items[index])"
-      >
-      🔹 {{ index }} {{ label }}
+      @click="togglePurchased(reversedItmes[index])"
+      v-bind:key="id">
+      🔹{{ label }}
     </li>
   </ul>
   <p v-if="items.length === 0"> 📿Lista de compras vacia📿</p>
