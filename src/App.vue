@@ -64,7 +64,7 @@ const doEdit = (edit) => {
     {{ newItemHighPriority ? "🔥" : "🧊" }}
     <!-- Boton de UI -->
     <button :disabled="newItem.length === 0" class="btn btn-primary">
-      Salvar Articulo
+      Salvar Articulo 
     </button>
   <!--Contador-->
   <p class="counter">
